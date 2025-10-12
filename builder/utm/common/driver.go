@@ -87,6 +87,8 @@ func NewDriver() (Driver, error) {
 		driver = &Utm45Driver{utmctlPath}
 	case "4.6":
 		driver = &Utm46Driver{Utm45Driver{utmctlPath}}
+	case "4.7":
+		driver = &Utm47Driver{Utm46Driver{Utm45Driver{utmctlPath}}}
 	default:
 		log.Fatalf("Unsupported UTM version: %s", version)
 	}
